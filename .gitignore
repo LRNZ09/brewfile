@@ -1,5 +1,8 @@
 .DS_Store
 
+# Entries only this Mac installs, never published.
+Brewfile.local
+
 # Session buffers and agent scratch.
 .remember/
 .superpowers/

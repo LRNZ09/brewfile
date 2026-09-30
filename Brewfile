@@ -1,3 +1,6 @@
+# Entries only this Mac installs, kept out of git in Brewfile.local
+local_brewfile = File.expand_path("Brewfile.local", __dir__)
+instance_eval File.read(local_brewfile), local_brewfile if File.exist?(local_brewfile)
 tap "teamookla/speedtest"
 # Simple, modern, secure file encryption
 brew "age"

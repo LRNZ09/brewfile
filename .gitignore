@@ -1,0 +1,5 @@
+.DS_Store
+
+# Session buffers and agent scratch.
+.remember/
+.superpowers/

@@ -13,7 +13,9 @@ On a blank Mac, in order.
 2. Sign in to the App Store. `mas` cannot sign in for you, and it cannot buy an
    app this Apple ID does not already own.
 
-3. Everything in the Brewfile:
+3. Everything in the Brewfile. On a Mac with entries of its own, write them to
+   `Brewfile.local` in the clone before installing. It is not in git, so
+   nothing restores it:
 
    ```sh
    git clone https://github.com/LRNZ09/brewfile.git
@@ -28,15 +30,37 @@ scans each commit as well as every push:
 
 ```sh
 lefthook install
-brew bundle dump --formula --cask --tap --mas --force
 ```
 
-Keep all four type flags: naming any type drops the rest.
+Record each install or uninstall as it happens. Add `--file=Brewfile.local` to
+any of these to keep the entry off GitHub:
+
+```sh
+brew bundle add <formula>
+brew bundle add --cask <cask>
+brew bundle remove --formula <formula>
+brew bundle remove --cask <cask>
+```
+
+App Store apps have no `add`: write the `mas "<name>", id: <id>` line by hand,
+with the id from `mas list`. `brew bundle remove --mas "<name>"` does work.
+
+To find what was missed:
+
+```sh
+brew bundle cleanup </dev/null   # installed, but in neither file
+brew bundle check --verbose      # in a file, but missing or outdated
+```
 
 ## Traps
 
-- A dump rewrites the whole file from what is installed, so a line removed by
-  hand only lasts until the next dump. Uninstall the package instead.
+- Do not run `brew bundle dump --force` here. It rewrites the whole file from
+  what is installed, which publishes every entry in `Brewfile.local` and drops
+  the lines that read it.
+- `brew bundle add` appends to the end of the file, not in order. Move the line
+  by hand to keep the file sorted.
+- A private entry from its own tap needs that `tap` line in `Brewfile.local`
+  too, or the tap is still published.
 - `brew bundle cleanup` without `--force` only lists what it would remove when
   it is not run in a terminal. In a terminal it asks, and `y` uninstalls
   everything not in the Brewfile, App Store apps included, and resets the tap
@@ -45,5 +69,4 @@ Keep all four type flags: naming any type drops the rest.
   mention the name, such as `brew "yq" # like "jq"`. Pass `--formula` or
   `--cask`.
 - `brew bundle add --install <name>` installs what is already in the Brewfile,
-  then adds the entry. It does not install `<name>`, and `add` cannot add App
-  Store apps at all.
+  then adds the entry. It does not install `<name>`.

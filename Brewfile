@@ -1,7 +1,9 @@
 # Entries only this Mac installs, kept out of git in Brewfile.local
 local_brewfile = File.expand_path("Brewfile.local", __dir__)
 instance_eval File.read(local_brewfile), local_brewfile if File.exist?(local_brewfile)
+
 tap "teamookla/speedtest"
+
 # Simple, modern, secure file encryption
 brew "age"
 # Plugin for encrypting files with age and PIV tokens such as YubiKeys
@@ -122,6 +124,7 @@ brew "watchman"
 brew "wget"
 # Ookla Speedtest
 brew "teamookla/speedtest/speedtest", trusted: true
+
 # Stand alone ad blocker
 cask "adguard"
 # Tools for building Android applications
@@ -190,29 +193,17 @@ cask "vorssaint"
 cask "zed"
 # Video communication and virtual meeting platform
 cask "zoom"
-mas "Amphetamine", id: 937984704
-mas "Apple Configurator", id: 1037126344
-mas "Apple Immersive Video Utility", id: 6477489398
+
 mas "Baking Soda", id: 1601151613
 mas "Bitwarden", id: 1352778147
 mas "CrystalFetch", id: 6454431289
 mas "Dato", id: 1470584107
-mas "Developer", id: 640199958
-mas "Docko", id: 6743445976
 mas "Folder Quick Look", id: 6753110395
-mas "GarageBand", id: 682658836
 mas "HP", id: 1474276998
 mas "Hush", id: 1544743900
-mas "iMovie", id: 408981434
 mas "JSON Peep", id: 1458969831
 mas "Keepa - Price Tracker", id: 1533805339
-mas "Keynote", id: 409183694
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
 mas "Plain Text Editor", id: 1572202501
-mas "Raycast Companion", id: 6738274497
-mas "TestFlight", id: 899247664
-mas "Transcription Pro", id: 6747905167
 mas "Velja", id: 1607635845
 mas "Vinegar", id: 1591303229
 mas "Xcode", id: 497799835

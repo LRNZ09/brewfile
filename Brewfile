@@ -56,6 +56,8 @@ brew "git"
 brew "gitleaks"
 # GNU Privacy Guard (OpenPGP)
 brew "gnupg"
+# Task is a task runner/build tool that aims to be simpler and easier to use
+brew "go-task"
 # Popular GNU data compression program
 brew "gzip"
 # Smarter Dockerfile linter to validate best practices

@@ -42,6 +42,8 @@ brew "gh"
 brew "ghostscript"
 # Distributed revision control system
 brew "git"
+# Git credential helper that authenticates in browser using OAuth
+brew "git-credential-oauth"
 # Audit git repos for secrets
 brew "gitleaks"
 # Popular GNU data compression program
@@ -120,8 +122,6 @@ cask "deepl"
 cask "firefox@developer-edition"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
-# Cross-platform Git credential storage for multiple hosting providers
-cask "git-credential-manager"
 # Web browser
 cask "google-chrome"
 # Graphically shows disk usage within a file system

@@ -57,8 +57,8 @@ brew bundle check --verbose      # in a file, but missing or outdated
 - Do not run `brew bundle dump --force` here. It rewrites the whole file from
   what is installed, which publishes every entry in `Brewfile.local` and drops
   the lines that read it.
-- `brew bundle add` appends to the end of the file, not in order. Move the line
-  by hand to keep the file sorted.
+- `brew bundle add` appends to the end of the file, not in order. The pre-commit
+  hook sorts the Brewfile, so commit it to put the line in place.
 - A private entry from its own tap needs that `tap` line in `Brewfile.local`
   too, or the tap is still published.
 - `brew bundle cleanup` without `--force` only lists what it would remove when

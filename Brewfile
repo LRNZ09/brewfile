@@ -172,9 +172,9 @@ mas "Hush", id: 1544743900
 mas "iMovie", id: 408981434
 mas "JSON Peep", id: 1458969831
 mas "Keepa - Price Tracker", id: 1533805339
-mas "Keynote", id: 409183694
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
+mas "Keynote", id: 361285480
+mas "Numbers", id: 361304891
+mas "Pages", id: 361309726
 mas "Plain Text Editor", id: 1572202501
 mas "Velja", id: 1607635845
 mas "Vinegar", id: 1591303229

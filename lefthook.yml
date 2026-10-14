@@ -5,3 +5,19 @@ pre-commit:
       run: |
         command -v gitleaks >/dev/null || { echo "✖ gitleaks not installed — brew install gitleaks"; exit 1; }
         gitleaks git --staged --no-banner --redact -v --config .gitleaks.toml
+    sort-brewfile:
+      glob: Brewfile
+      stage_fixed: true
+      run: |
+        ruby -e '
+          head, recs, buf = [], [], []
+          File.foreach("Brewfile") do |l|
+            if l.start_with?("#") then buf << l
+            elsif l =~ /\A(tap|brew|cask|mas) "([^"]+)"/ then recs << [buf << l, $1, $2]; buf = []
+            elsif !l.strip.empty? then head.concat(buf << l); buf = []
+            end
+          end
+          rank = %w[tap brew cask mas]
+          recs.sort_by! { |_, t, n| [rank.index(t), n.count("/"), n.downcase] }
+          File.write("Brewfile", (head + recs.flat_map(&:first) + buf).join)
+        '

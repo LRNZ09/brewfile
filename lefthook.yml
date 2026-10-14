@@ -5,6 +5,11 @@ pre-commit:
       run: |
         command -v gitleaks >/dev/null || { echo "✖ gitleaks not installed — brew install gitleaks"; exit 1; }
         gitleaks git --staged --no-banner --redact -v --config .gitleaks.toml
+    markdownlint:
+      glob: "*.md"
+      run: |
+        command -v markdownlint-cli2 >/dev/null || { echo "✖ markdownlint-cli2 not installed — brew install markdownlint-cli2"; exit 1; }
+        markdownlint-cli2 {staged_files}
     sort-brewfile:
       glob: Brewfile
       stage_fixed: true

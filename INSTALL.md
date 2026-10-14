@@ -25,8 +25,8 @@ On a blank Mac, in order.
 
 ## Updating the Brewfile
 
-From the repo root. `lefthook install` is needed once per clone, so gitleaks
-scans each commit as well as every push:
+From the repo root. `lefthook install` is needed once per clone, so gitleaks and
+markdownlint check each commit as well as every push:
 
 ```sh
 lefthook install
